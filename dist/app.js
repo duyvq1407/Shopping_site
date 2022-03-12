@@ -1,9 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-// type Product = {
-//     id: number,
-//     name: string,
-// }
+// export{}
 // const a: number = 20;
 // const b: number = 100;
 // const age: number = 19;
@@ -23,3 +19,22 @@ function show(a, b) {
 show("a", "c");
 show(5, "a");
 show({ id: 1, name: "duy" }, 5);
+show((z) => console.log(z), 1);
+const data = [
+    { id: 1, name: "Product 1" },
+    { id: 2, name: "Product 2" },
+    { id: 3, name: "Product 3" },
+];
+function getProduct(items) {
+    console.log(items);
+    // document.querySelector("#app")?.innerHTML = items.name
+    // items.map((item) => `Name: ${item.name}`)
+    items.forEach(item => {
+        document.querySelector("#app").innerHTML += `Name: ${item.name} <br>`;
+    });
+}
+function get(items) {
+    items.map(item => item.name);
+}
+get(data);
+getProduct(data);
