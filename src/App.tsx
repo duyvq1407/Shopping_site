@@ -1,26 +1,49 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import ShowInfo from './components/showInfo'
-import Product from './components/product'
+import ShowInfo from './components/ShowInfo'
+import Product from './components/Product'
+import {Routes, Route, NavLink } from 'react-router-dom';
+import { list } from './api/products'
 
 interface IProduct{
-    id: number, 
+    id: string, 
     name: string
 }
 
-const data = [
-  { id: 1, name: "Product A"}, // item
-  { id: 2, name: "Product B"}, // item
-]
-
 function App() {
   const [count, setCount] = useState(0)
-  const [products, setProducts] = useState<IProduct[]>(data)
+  const [products, setProducts] = useState<IProduct[]>([])
+  useEffect(() => {
+    const getProducts = async () =>{
+      const { data } = await list();
+      console.log(data)
+      setProducts(data)
+    }
+    getProducts();
+  },[])
   return (
     <div className="App">
-        <ShowInfo name="abc" age={10}/>
-        {products.map(item => <Product data={item} />)}
+      <header>
+        <ul>
+          <li>
+            <NavLink to='/'>Home Page</NavLink>
+          </li>
+          <li>
+            <NavLink to='/products'>Product Page</NavLink>
+          </li>
+          <li>
+            <NavLink to='/about'>About</NavLink>
+          </li>
+        </ul>
+      </header>
+      <main>
+        <Routes>
+          <Route path='/' element={<h1>Home page</h1>}/>
+          <Route path='/products' element={products.map(item => <div>{item.name}</div>)}/>
+          <Route path='/about' element={<ShowInfo name="Duy" age={0}/>}/>
+        </Routes>
+      </main>
     </div>
   )
 }

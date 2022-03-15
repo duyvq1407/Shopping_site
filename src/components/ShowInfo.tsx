@@ -5,10 +5,10 @@ type ShowInfoProps = {
     age: number
 }
 
-const ShowInfo = ({name}: ShowInfoProps) => {
+const ShowInfo = ({name,age}: ShowInfoProps) => {
 
   return (
-    <div>Hi {name}</div>
+    <div>Hi {name}, {age} tuổi</div>
   )
 }
 
