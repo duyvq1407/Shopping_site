@@ -2,7 +2,7 @@
 
 type ProductProps = {
     data: {
-        id: number,
+        id: string,
         name: string
     }
 }
