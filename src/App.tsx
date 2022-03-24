@@ -16,7 +16,6 @@ import ProductDetail from './pages/ProductDetail'
 import ProductAdd from './pages/ProductAdd'
 import { IProduct } from './types/product'
 
-
 function App() {
   const [count, setCount] = useState(0)
   const [products, setProducts] = useState<IProduct[]>([])
