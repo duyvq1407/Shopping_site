@@ -6,14 +6,18 @@ export const list = () => {
     return instance.get(url);
 }
 export const read = (id: string) => {
-    const url = `/api/product/${id}`;
+    const url = `/api/products/${id}`;
     return instance.get(url);
 }
 export const remove = (_id: string) => {
-    const url = `api/product/${_id}`;
+    const url = `api/products/${_id}`;
     return instance.delete(url);
 }
 export const add = (product: IProduct) => {
     const url = '/api/products';
     return instance.post(url,product);
+}
+export const update = (product: IProduct) => {
+    const url = `/api/products/${product._id}`;
+    return instance.put(url,product);
 }

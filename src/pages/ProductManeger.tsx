@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom';
 import { IProduct } from '../types/product'
 
 type ProductManegerProps = {
@@ -11,10 +12,12 @@ const ProductManeger = (props: ProductManegerProps) => {
     <div>
       <table>
         <thead>
-          <th>#</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th></th>
+          <tr>
+            <th>#</th>
+              <th>Name</th>
+              <th>Price</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
           {props.products.map((item, index)=>{
@@ -24,6 +27,7 @@ const ProductManeger = (props: ProductManegerProps) => {
             <td>{item.price}</td>
             <td>
               <button onClick={()=> props.onRemove(item._id)}>Remove</button>
+              <Link to={`/admin/products/${item._id}/edit`}>Edit</Link>
             </td>
           </tr>
           })}
