@@ -6,9 +6,9 @@ type PriveRouterProps = {
 }
 
 const PriveRouter = (props: PriveRouterProps) => {
-  const isAuth = true; // lấy từ localstorage ra
-  if (!isAuth) {
-    return <Navigate to='/login'/>
+  const { role } = JSON.parse(localStorage.getItem('user')); // lấy từ localstorage ra
+  if (role != 0) {
+    return <Navigate to='/signin'/>
   }
   return props.children
 }

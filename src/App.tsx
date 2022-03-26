@@ -17,6 +17,8 @@ import ProductAdd from './pages/ProductAdd'
 import { IProduct } from './types/product'
 import ProductEdit from './pages/ProductEdit'
 import PriveRouter from './components/PriveRouter'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -46,7 +48,6 @@ function App() {
     setProducts(products.map(item => item._id == data._id ? data : item))
   }
 
-
   return (
     <div className="App">
       <main>
@@ -67,6 +68,8 @@ function App() {
               <Route path=':id' element = {<ProductDetail/> }/>
             </Route>
             <Route path='/About' element = {<h1>About Page</h1>}/>
+            <Route path='/signin' element = {<Login />}/>
+            <Route path='/signup' element = {<Register />}/>
           </Route>
         </Routes>
       </main>
