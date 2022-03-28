@@ -22,6 +22,7 @@ import { CategoryType } from './types/category';
 import { addCate, listCate, removeCate, updateCate } from './api/category';
 import CategoryAdd from './pages/category/CategoryAdd';
 import CategoryEdit from './pages/category/CategoryEdit';
+import Account from './pages/Account';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -97,8 +98,9 @@ function App() {
               <Route path=':id' element = {<ProductDetail/> }/>
             </Route>
             <Route path='/About' element = {<h1>About Page</h1>}/>
-            <Route path='/signin' element = {<Login />}/>
-            <Route path='/signup' element = {<Register />}/>
+            <Route path='/signin' element = {<PriveRouter><Login /></PriveRouter>}/>
+            <Route path='/signup' element = {<PriveRouter><Register /></PriveRouter>}/>
+            <Route path='/account' element = {<PriveRouter><Account/></PriveRouter>}/>
           </Route>
         </Routes>
       </main>

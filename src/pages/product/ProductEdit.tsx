@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
+import { listCate } from '../../api/category'
 import { read } from '../../api/products'
 import { IProduct } from '../../types/product'
 type ProductEditProps = {
@@ -15,6 +16,10 @@ const ProductEdit = (props: ProductEditProps) => {
     const navigate = useNavigate();
     const {id} = useParams();
     useEffect(() => {
+        const getCategories = async() => {
+            const {data: categories} = await listCate();
+        }
+        getCategories();
         const getProduct = async() =>{
             const {data} = await read(id);
             reset(data)

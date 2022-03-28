@@ -20,11 +20,20 @@ const Register = (props: RegisterProps) => {
         navigate("/signin")
     }
   return (
-      <form onSubmit = {handleSubmit(onSubmit)}>
-          <input type="email" placeholder='Email' {...register('email', {required: true})}/> <br />
-          <input type="text" placeholder='Name' {...register('name', {required: true})}/> <br />
-          <input type="password" placeholder='Password' {...register('password', {required: true})}/> <br />
-          <button>Đăng ký</button>
+      <form className='container' onSubmit = {handleSubmit(onSubmit)}>
+        <div className="mb-3">
+            <label className="form-label">Full Name</label>
+            <input type="text" className="form-control" {...register('name', {required: true})}/>
+        </div>
+        <div className="mb-3">
+            <label className="form-label">Email address</label>
+            <input type="email" className="form-control" {...register('email', {required: true})}/>
+        </div>
+        <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input type="password" className="form-control" {...register('password', {required: true})}/>
+        </div>
+        <button type="submit" className="btn btn-primary">Register</button>
       </form>
   )
 }
