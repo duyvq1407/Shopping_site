@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./dashboard.css";
 import AdminLayout from './pages/layouts/AdminLayout'
 import Dashboard from './pages/Dashboard'
-import ProductManeger from './pages/ProductManeger'
+import ProductManeger from './pages/ProductManager'
 import WebsiteLayout from './pages/layouts/WebsiteLayout'
 import Home from './pages/Home'
 import ProductDetail from './pages/ProductDetail'

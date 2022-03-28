@@ -17,8 +17,8 @@ const Login = (props: LoginProps) => {
     const {register, handleSubmit, formState: {errors}} = useForm<TypeInputs>();
     const navigate = useNavigate();
     const onSubmit: SubmitHandler<TypeInputs> = async (data) =>{
-        const user = await login(data);
-        localStorage.setItem('user', JSON.stringify(user.data))
+        const {data: user} = await login(data);
+        localStorage.setItem('user', JSON.stringify(user))
 
     }
   return (

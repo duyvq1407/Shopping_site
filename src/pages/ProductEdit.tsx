@@ -29,9 +29,17 @@ const ProductEdit = (props: ProductEditProps) => {
     }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" placeholder='Tên sản phẩm' {...register('name', {required: true})}/>
-        <input type="number" placeholder='Giá' {...register('price', {required: true})}/>
-        <button>Sửa</button>
+        <div>
+        <div className="mb-3">
+            <label className="form-label">Tên sản phẩm</label>
+            <input type="text" {...register('name', {required: true})} className="form-control"/>
+        </div>
+        <div className="mb-3">
+            <label className="form-label">Giá sản phẩm</label>
+            <input type="number" {...register('price', {required: true})} className="form-control"/>
+        </div>
+        <button className="btn btn-primary">Update Product</button>
+        </div>
     </form>
   )
 }
