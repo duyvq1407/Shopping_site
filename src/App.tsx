@@ -93,14 +93,14 @@ function App() {
           </Route>
           <Route path='/' element={<WebsiteLayout/>}>
             <Route index element = {<Home/>}/>
-            <Route path='/product'>
+            <Route path='/products'>
               <Route index  element = {<h1>Product Page</h1>} />
               <Route path=':id' element = {<ProductDetail/> }/>
             </Route>
             <Route path='/About' element = {<h1>About Page</h1>}/>
             <Route path='/signin' element = {<PriveRouter><Login /></PriveRouter>}/>
             <Route path='/signup' element = {<PriveRouter><Register /></PriveRouter>}/>
-            <Route path='/account' element = {<PriveRouter><Account/></PriveRouter>}/>
+            <Route path='/account' element = {<Account/>}/>
           </Route>
         </Routes>
       </main>

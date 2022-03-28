@@ -5,6 +5,9 @@ type Props = {}
 
 const Account = (props: Props) => {
     const navigate = useNavigate()
+    if (!localStorage.getItem('user')) {
+        navigate('/signin')
+    }
     const { user } = JSON.parse(localStorage.getItem('user') as string); // lấy từ localstorage ra
     return (
         <div>
