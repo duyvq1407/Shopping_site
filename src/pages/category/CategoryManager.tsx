@@ -1,10 +1,9 @@
 import { Space, Table } from 'antd';
-import React from 'react'
 import { Link } from 'react-router-dom';
-import { IProduct } from '../types/product'
+import { CategoryType } from '../../types/category';
 
 type CategoryManegerProps = {
-  products: IProduct[];
+  categories: CategoryType[];
   onRemove: (_id:string) =>void
 }
 
@@ -21,14 +20,14 @@ const CategoryManeger = (props: CategoryManegerProps) => {
       key: 'action',
       render: (text, record) => (
         <Space size="middle">
-          <a><Link to={`/admin/products/${record._id}/edit`}>Edit</Link></a>
+          <a><Link to={`/admin/categories/${record._id}/edit`}>Edit</Link></a>
           <a><button onClick={()=> props.onRemove(record._id)}>Remove</button></a>
         </Space>
       ),
     },
   ];
   
-  const data = props.products;
+  const data = props.categories;
   
   return (
     <div>

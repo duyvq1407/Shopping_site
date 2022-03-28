@@ -1,7 +1,6 @@
 import {useForm, SubmitHandler} from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 type ProductAddProps = {
-  name:string,
   onAdd:(product: TypeInputs) => void
 }
 type TypeInputs = {

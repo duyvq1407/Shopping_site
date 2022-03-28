@@ -1,7 +1,7 @@
 import { Space, Table } from 'antd';
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { IProduct } from '../types/product'
+import { IProduct } from '../../types/product'
 
 type ProductManegerProps = {
   products: IProduct[];

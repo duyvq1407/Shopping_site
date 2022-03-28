@@ -1,42 +1,36 @@
 import React, { useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
-import { read } from '../api/products'
-import { IProduct } from '../types/product'
-type ProductEditProps = {
-    onUpdate: (product: IProduct) => void
+import { readCate } from '../../api/category'
+import { CategoryType } from '../../types/category'
+type CategoryEditProps = {
+    onUpdate: (category: CategoryType) => void
 }
 type FormInput = {
-    name : string,
-    price: number
+    name : string
 }
-const ProductEdit = (props: ProductEditProps) => {
+const CategoryEdit = (props: CategoryEditProps) => {
     const {register, handleSubmit, formState: {errors}, reset} = useForm<FormInput>();
     const navigate = useNavigate();
     const {id} = useParams();
     useEffect(() => {
-        const getProduct = async() =>{
-            const {data} = await read(id);
+        const getCategories = async() =>{
+            const {data} = await readCate(id);
             reset(data)
         }
-        getProduct()
+        getCategories()
     },[])
 
     const onSubmit: SubmitHandler<FormInput> = data => {
-        console.log(data)
         props.onUpdate(data)
-        navigate('/admin/products')
+        navigate('/admin/categories')
     }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
         <div>
         <div className="mb-3">
-            <label className="form-label">Tên sản phẩm</label>
+            <label className="form-label">Tên danh mục</label>
             <input type="text" {...register('name', {required: true})} className="form-control"/>
-        </div>
-        <div className="mb-3">
-            <label className="form-label">Giá sản phẩm</label>
-            <input type="number" {...register('price', {required: true})} className="form-control"/>
         </div>
         <button className="btn btn-primary">Update Product</button>
         </div>
@@ -44,4 +38,4 @@ const ProductEdit = (props: ProductEditProps) => {
   )
 }
 
-export default ProductEdit
+export default CategoryEdit

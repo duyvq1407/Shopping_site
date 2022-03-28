@@ -2,15 +2,15 @@ import { CategoryType } from "../types/category";
 import instance from "./instance";
 const { user, token } = JSON.parse(localStorage.getItem('user') as string); // lấy từ localstorage ra
 
-export const list = () => {
+export const listCate = () => {
     const url = '/api/categories';
     return instance.get(url);
 }
-export const read = (id: string) => {
+export const readCate = (id: string) => {
     const url = `/api/categories/${id}`;
     return instance.get(url);
 }
-export const remove = (_id: string) => {
+export const removeCate = (_id: string) => {
     const url = `api/categories/${_id}/${user._id}`;
     return instance.delete(url, {
         headers: {
@@ -18,7 +18,7 @@ export const remove = (_id: string) => {
         }
     });
 }
-export const add = (category: CategoryType) => {
+export const addCate = (category: CategoryType) => {
     const url = `/api/categories/${user._id}`;
     return instance.post(url,category, {
         headers: {
@@ -26,7 +26,7 @@ export const add = (category: CategoryType) => {
         }
     });
 }
-export const update = (category: CategoryType) => {
+export const updateCate = (category: CategoryType) => {
     const url = `/api/categories/${category._id}/${user._id}`;
     return instance.put(url,category, {
         headers: {

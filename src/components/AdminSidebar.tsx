@@ -34,8 +34,12 @@ const AdminSidebar = (props: Props) => {
           </Menu.Item>
         </SubMenu>
         <SubMenu key="sub2" icon={<TeamOutlined />} title="Categories Manager">
-          <Menu.Item key="5">Categories</Menu.Item>
-          <Menu.Item key="6">Add Category</Menu.Item>
+          <Menu.Item key="5">
+            <NavLink to="/admin/categories">Categories</NavLink>
+          </Menu.Item>
+          <Menu.Item key="6">
+            <NavLink to="/admin/categories/add">Add Category</NavLink>
+          </Menu.Item>
         </SubMenu>
         <Menu.Item key="7" icon={<UserOutlined />}>
           Users
