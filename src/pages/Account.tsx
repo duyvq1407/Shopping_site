@@ -14,7 +14,7 @@ const Account = (props: Props) => {
             <div className='d-flex align'><h6>Name: </h6> {user.name} </div>
             <div className='d-flex align'><h6>Email: </h6> {user.email} </div>
             <button onClick={()=>{
-                // localStorage.removeItem("user");
+                localStorage.removeItem("user");
                 navigate('/')
             }}>Đăng xuất</button>
         </div>
