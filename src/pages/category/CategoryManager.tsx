@@ -22,6 +22,7 @@ const CategoryManeger = (props: CategoryManegerProps) => {
         <Space size="middle">
           <a><Link to={`/admin/categories/${record._id}/edit`}>Edit</Link></a>
           <a><button onClick={()=> props.onRemove(record._id)}>Remove</button></a>
+          <a><Link to={`/admin/categories/${record._id}/view`}>View</Link></a>
         </Space>
       ),
     },

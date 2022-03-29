@@ -15,8 +15,8 @@ const CategoryEdit = (props: CategoryEditProps) => {
     const {id} = useParams();
     useEffect(() => {
         const getCategories = async() =>{
-            const {data} = await readCate(id);
-            reset(data)
+            const { data } = await readCate(id);
+            reset(data.category)
         }
         getCategories()
     },[])

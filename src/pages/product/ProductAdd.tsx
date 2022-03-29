@@ -7,7 +7,6 @@ type ProductAddProps = {
 }
 type TypeInputs = {
     name: string,
-    category?: string,
     price:  number
 }
 
@@ -37,17 +36,14 @@ const ProductAdd = (props: ProductAddProps) => {
           <label className="form-label">Giá sản phẩm</label>
           <input type="number" {...register('price')} className="form-control"/>
         </div>
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <label className="form-label">Danh mục</label>
           <select className="form-select" {...register('category')}>
-            {/* {data.map(item => {
-              return <option value={item._id}>{item.name}</option>
-            })} */}
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
-        </div>
+        </div> */}
         <button className="btn btn-primary">Add Product</button>
       </div>
     </form>

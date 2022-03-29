@@ -23,6 +23,7 @@ import { addCate, listCate, removeCate, updateCate } from './api/category';
 import CategoryAdd from './pages/category/CategoryAdd';
 import CategoryEdit from './pages/category/CategoryEdit';
 import Account from './pages/Account';
+import CategoryDetail from './pages/category/CategoryDetail';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -58,6 +59,7 @@ function App() {
     const { data } = await add(product);
     setProducts([...products,data])
   }
+  
   const onHandleAddCate = async (category : CategoryType) => {
     const { data } = await addCate(category);
     setCategories([...categories,data])
@@ -89,6 +91,7 @@ function App() {
               <Route index element={<PriveRouter><CategoryManeger categories={categories} onRemove={removeItemCate}/></PriveRouter>}/>
               <Route path='add' element={<PriveRouter><CategoryAdd onAdd={onHandleAddCate}/></PriveRouter>}/>
               <Route path=':id/edit' element={<PriveRouter><CategoryEdit onUpdate={onHandleUpdateCate}/></PriveRouter>}/>
+              <Route path=':id/view' element={<PriveRouter><CategoryDetail products={products} onRemove={removeItem}/></PriveRouter>}/>
             </Route>
           </Route>
           <Route path='/' element={<WebsiteLayout/>}>
