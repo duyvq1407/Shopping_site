@@ -10,3 +10,7 @@ export const login = (user: UserType) => {
     const url = '/api/login';
     return instance.post(url,user);
 }
+export const getAllUsers = (user: UserType) => {
+    const url = '/api/users';
+    return instance.post(url,user);
+}

@@ -101,9 +101,9 @@ function App() {
               <Route path=':id' element = {<ProductDetail/> }/>
             </Route>
             <Route path='/About' element = {<h1>About Page</h1>}/>
-            <Route path='/signin' element = {<PriveRouter><Login /></PriveRouter>}/>
-            <Route path='/signup' element = {<PriveRouter><Register /></PriveRouter>}/>
-            <Route path='/account' element = {<Account/>}/>
+            <Route path='/signin' element = {<Login />}/>
+            <Route path='/signup' element = {<Register />}/>
+            <Route path='/account' element = {<PriveRouter><Account/></PriveRouter>}/>
           </Route>
         </Routes>
       </main>

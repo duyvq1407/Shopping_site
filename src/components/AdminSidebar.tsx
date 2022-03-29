@@ -42,7 +42,7 @@ const AdminSidebar = (props: Props) => {
           </Menu.Item>
         </SubMenu>
         <Menu.Item key="7" icon={<UserOutlined />}>
-          Users
+          <NavLink to="/admin/users">Users</NavLink>
         </Menu.Item>
       </Menu>
     </Sider>
