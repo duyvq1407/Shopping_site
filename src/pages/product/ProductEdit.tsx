@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
-import { listCate } from '../../api/category'
+import { listCate, readCate } from '../../api/category'
 import { read } from '../../api/products'
 import { CategoryType } from '../../types/category'
 import { IProduct } from '../../types/product'
@@ -18,37 +19,57 @@ type FormInput = {
 const ProductEdit = (props: ProductEditProps) => {
     const {register, handleSubmit, formState: {errors}, reset} = useForm<FormInput>();
     const navigate = useNavigate();
+    const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/duyvqph18088/image/upload";
+    const CLOUDINARY_PRESET = "y12jh0jj";
     const {id} = useParams();
+    const [image, setImage] = useState(null)
+    const [category, setCategory] = useState({})
     useEffect(() => {
-        const getCategories = async() => {
-            const {data: categories} = await listCate();
-        }
-        getCategories();
         const getProduct = async() =>{
             const {data} = await read(id);
+            setImage(data.image);
+            const {data: category} = await readCate(data.category);
+            setCategory(category)
             reset(data)
         }
-        getProduct()
+      getProduct()
+      console.log({category})
     },[])
 
-    const onSubmit: SubmitHandler<FormInput> = data => {
-        console.log(data)
-        props.onUpdate(data)
-        navigate('/admin/products')
+    const onSubmit: SubmitHandler<FormInput> = async (data) => {
+      const file = data.image[0];
+      if (data.image == image) {
+        props.onUpdate(data)       
+      }
+      if(data.image != image){
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", CLOUDINARY_PRESET);
+  
+        // call api cloudinary
+        const res = await axios.post(CLOUDINARY_API, formData, {
+            headers: {
+                "Content-Type": "application/form-data",
+            },
+        });
+        props.onUpdate({...data, image: res.data.url})
+      }
+      navigate('/admin/products')
     }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
         <div>
         <div className="mb-3">
             <label className="form-label">Tên sản phẩm</label>
-            <input type="text" {...register('name', {required: true})} className="form-control"/>
+            <input type="text" {...register('name')} className="form-control"/>
         </div>
         <div className="mb-3">
             <label className="form-label">Giá sản phẩm</label>
-            <input type="number" {...register('price', {required: true})} className="form-control"/>
+            <input type="number" {...register('price')} className="form-control"/>
         </div>
         <div className="mb-3">
-          <label className="form-label">Ảnh sản phẩm</label>
+          <label className="form-label">Ảnh sản phẩm</label> <br />
+          {image && <img src={image} width={300}></img>}
           <input type="file" {...register('image')} className="form-control"/>
         </div>
         <div className="mb-3">

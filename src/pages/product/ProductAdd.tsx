@@ -20,7 +20,6 @@ const ProductAdd = (props: ProductAddProps) => {
     const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/duyvqph18088/image/upload";
     const CLOUDINARY_PRESET = "y12jh0jj";
     const onSubmit: SubmitHandler<TypeInputs> = async (data) =>{
-
       console.log(data)
       const file = data.image[0]
       const formData = new FormData();

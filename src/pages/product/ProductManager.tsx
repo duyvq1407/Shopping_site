@@ -14,29 +14,30 @@ const ProductManeger = (props: ProductManegerProps) => {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      render: (text) => <a>{text}</a>,
+      render: (text : string) => <a>{text}</a>,
     },
     {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
+      render: (text : string) => <a>{text}</a>,
     },
     {
       title: 'Image',
       key: 'Image',
-      render: (text, record) => (
+      render: (text : string, record: any) => (
         <Space size="middle">
-          <img src={record.image} alt="" width={50} />
+          <img src={record.image} alt="" height={100} />
         </Space>
       ),
     },
     {
       title: 'Action',
       key: 'action',
-      render: (text, record) => (
+      render: (text : string, record: any) => (
         <Space size="middle">
-          <a><Link to={`/admin/products/${record._id}/edit`}>Edit</Link></a>
-          <a><button onClick={()=> props.onRemove(record._id)}>Remove</button></a>
+          <Link to={`/admin/products/${record._id}/edit`}>Edit</Link>
+          <button onClick={()=> props.onRemove(record._id)}>Remove</button>
         </Space>
       ),
     },
