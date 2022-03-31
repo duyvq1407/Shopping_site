@@ -84,8 +84,8 @@ function App() {
             <Route path='dashboard' element={<Dashboard />}/>
             <Route path='products'>
               <Route index element={<PriveRouter><ProductManeger products={products} onRemove={removeItem}/></PriveRouter>}/>
-              <Route path='add' element={<PriveRouter><ProductAdd onAdd={onHandleAdd}/></PriveRouter>}/>
-              <Route path=':id/edit' element={<PriveRouter><ProductEdit onUpdate={onHandleUpdate}/></PriveRouter>}/>
+              <Route path='add' element={<PriveRouter><ProductAdd categories={categories} onAdd={onHandleAdd}/></PriveRouter>}/>
+              <Route path=':id/edit' element={<PriveRouter><ProductEdit categories={categories} onUpdate={onHandleUpdate}/></PriveRouter>}/>
             </Route>
             <Route path='categories'>
               <Route index element={<PriveRouter><CategoryManeger categories={categories} onRemove={removeItemCate}/></PriveRouter>}/>

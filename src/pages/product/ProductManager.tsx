@@ -22,6 +22,15 @@ const ProductManeger = (props: ProductManegerProps) => {
       key: 'price',
     },
     {
+      title: 'Image',
+      key: 'Image',
+      render: (text, record) => (
+        <Space size="middle">
+          <img src={record.image} alt="" width={50} />
+        </Space>
+      ),
+    },
+    {
       title: 'Action',
       key: 'action',
       render: (text, record) => (
