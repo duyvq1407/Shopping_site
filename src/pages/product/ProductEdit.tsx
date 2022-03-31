@@ -23,17 +23,13 @@ const ProductEdit = (props: ProductEditProps) => {
     const CLOUDINARY_PRESET = "y12jh0jj";
     const {id} = useParams();
     const [image, setImage] = useState(null)
-    const [category, setCategory] = useState({})
     useEffect(() => {
         const getProduct = async() =>{
             const {data} = await read(id);
             setImage(data.image);
-            const {data: category} = await readCate(data.category);
-            setCategory(category)
             reset(data)
         }
       getProduct()
-      console.log({category})
     },[])
 
     const onSubmit: SubmitHandler<FormInput> = async (data) => {

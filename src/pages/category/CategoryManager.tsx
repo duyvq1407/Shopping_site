@@ -13,12 +13,12 @@ const CategoryManeger = (props: CategoryManegerProps) => {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      render: (text) => <a>{text}</a>,
+      render: (text: string) => <a>{text}</a>,
     },
     {
       title: 'Action',
       key: 'action',
-      render: (text, record) => (
+      render: (text: string, record: any) => (
         <Space size="middle">
           <a><Link to={`/admin/categories/${record._id}/edit`}>Edit</Link></a>
           <a><button onClick={()=> props.onRemove(record._id)}>Remove</button></a>

@@ -20,7 +20,6 @@ const ProductManeger = (props: ProductManegerProps) => {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
-      render: (text : string) => <a>{text}</a>,
     },
     {
       title: 'Image',
@@ -42,7 +41,6 @@ const ProductManeger = (props: ProductManegerProps) => {
       ),
     },
   ];
-  
   const data = props.products;
   // [
   //   {
