@@ -20,15 +20,21 @@ const CategoryManeger = (props: CategoryManegerProps) => {
       key: 'action',
       render: (text: string, record: any) => (
         <Space size="middle">
-          <a><Link to={`/admin/categories/${record._id}/edit`}>Edit</Link></a>
-          <a><button onClick={()=> props.onRemove(record._id)}>Remove</button></a>
-          <a><Link to={`/admin/categories/${record._id}/view`}>View</Link></a>
+          <Link to={`/admin/categories/${record._id}/edit`}>Edit</Link>
+          <button onClick={()=> props.onRemove(record._id)}>Remove</button>
+          <Link to={`/admin/categories/${record._id}/view`}>View</Link>
         </Space>
       ),
     },
   ];
   
-  const data = props.categories;
+  const data = props.categories.map((item: CategoryType, index) => {
+    return {
+      key: index + 1,
+      name: item.name,
+      _id: item._id
+    }
+  });
   
   return (
     <div>

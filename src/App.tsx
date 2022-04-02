@@ -24,6 +24,7 @@ import CategoryAdd from './pages/category/CategoryAdd';
 import CategoryEdit from './pages/category/CategoryEdit';
 import Account from './pages/Account';
 import CategoryDetail from './pages/category/CategoryDetail';
+import PriveAccount from './components/PrivateAccount';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -103,7 +104,7 @@ function App() {
             <Route path='/About' element = {<h1>About Page</h1>}/>
             <Route path='/signin' element = {<Login />}/>
             <Route path='/signup' element = {<Register />}/>
-            <Route path='/account' element = {<PriveRouter><Account/></PriveRouter>}/>
+            <Route path='/account' element = {<PriveAccount><Account/></PriveAccount>}/>
           </Route>
         </Routes>
       </main>

@@ -3,7 +3,6 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
-import { listCate, readCate } from '../../api/category'
 import { read } from '../../api/products'
 import { CategoryType } from '../../types/category'
 import { IProduct } from '../../types/product'
@@ -27,7 +26,6 @@ const ProductEdit = (props: ProductEditProps) => {
     useEffect(() => {
         const getProduct = async() =>{
             const {data} = await read(id as string);
-            console.log(data.image)
             setImage(data.image);
             reset(data)
         }
@@ -35,7 +33,7 @@ const ProductEdit = (props: ProductEditProps) => {
     },[])
     const imgPost = document.querySelector("#image");
     imgPost?.addEventListener('change', (e) => {
-      setImage(URL.createObjectURL(e.target.files[0]))
+      setImage(URL.createObjectURL(e.target?.files[0]))
     })
     
     const onSubmit: SubmitHandler<FormInput> = async (data) => {
@@ -72,6 +70,7 @@ const ProductEdit = (props: ProductEditProps) => {
         <div className="mb-3">
           <label className="form-label">Ảnh sản phẩm</label> <br />
           <input type="file" {...register('image')} id="image" className="form-control"/>
+          <br />
           {image && <Image src={image} width={200}/>}
         </div>
         <div className="mb-3">

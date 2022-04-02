@@ -1,6 +1,8 @@
 import { Space, Table, Image } from 'antd';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { listCate } from '../../api/category';
+import { CategoryType } from '../../types/category';
 import { IProduct } from '../../types/product'
 
 type ProductManegerProps = {
@@ -9,6 +11,14 @@ type ProductManegerProps = {
 }
 
 const ProductManeger = (props: ProductManegerProps) => {
+  const [category, setCategory] = useState<CategoryType[]>()
+  useEffect(() => {
+      const getCategory = async() =>{
+        const {data: category} = await listCate()
+        setCategory(category)
+      }
+      getCategory()
+  },[])
   const columns = [
     {
       title: 'Name',
@@ -20,6 +30,12 @@ const ProductManeger = (props: ProductManegerProps) => {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
+    },
+    {
+      title: 'Category',
+      dataIndex: 'category',
+      key: 'category',
+      render: (text : string) => <a>{category && category.map(item => {if(item._id == text){return item.name}} )}</a>,
     },
     {
       title: 'Image',
@@ -41,7 +57,16 @@ const ProductManeger = (props: ProductManegerProps) => {
       ),
     },
   ];
-  const data = props.products;
+  const data = props.products.map((item: IProduct, index) => {
+    return {
+      key: index + 1,
+      name: item.name,
+      category: item.category,
+      price: item.price,
+      image: item.image,
+      _id: item._id
+    }
+  });
   // [
   //   {
   //     key: '1',
