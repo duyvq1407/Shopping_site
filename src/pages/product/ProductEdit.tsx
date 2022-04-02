@@ -1,3 +1,4 @@
+import { Image } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -22,16 +23,21 @@ const ProductEdit = (props: ProductEditProps) => {
     const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/duyvqph18088/image/upload";
     const CLOUDINARY_PRESET = "y12jh0jj";
     const {id} = useParams();
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState<String>('');
     useEffect(() => {
         const getProduct = async() =>{
-            const {data} = await read(id);
+            const {data} = await read(id as string);
+            console.log(data.image)
             setImage(data.image);
             reset(data)
         }
       getProduct()
     },[])
-
+    const imgPost = document.querySelector("#image");
+    imgPost?.addEventListener('change', (e) => {
+      setImage(URL.createObjectURL(e.target.files[0]))
+    })
+    
     const onSubmit: SubmitHandler<FormInput> = async (data) => {
       const file = data.image[0];
       if (data.image == image) {
@@ -65,8 +71,8 @@ const ProductEdit = (props: ProductEditProps) => {
         </div>
         <div className="mb-3">
           <label className="form-label">Ảnh sản phẩm</label> <br />
-          {image && <img src={image} width={300}></img>}
-          <input type="file" {...register('image')} className="form-control"/>
+          <input type="file" {...register('image')} id="image" className="form-control"/>
+          {image && <Image src={image} width={200}/>}
         </div>
         <div className="mb-3">
           <label className="form-label">Danh mục</label>

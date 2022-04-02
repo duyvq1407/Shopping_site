@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Layout, Breadcrumb } from 'antd';
 import "../../index.css";
-import Sidebar from '../../components/Sidebar';
 import AdminSidebar from '../../components/AdminSidebar';
 
 const { Header, Content, Footer } = Layout;

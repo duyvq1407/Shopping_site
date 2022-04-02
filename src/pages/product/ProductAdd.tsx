@@ -1,5 +1,6 @@
+import { Image } from 'antd'
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {useForm, SubmitHandler} from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { CategoryType } from '../../types/category'
@@ -19,6 +20,12 @@ const ProductAdd = (props: ProductAddProps) => {
     const navigate = useNavigate();
     const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/duyvqph18088/image/upload";
     const CLOUDINARY_PRESET = "y12jh0jj";
+    const [image, setImage] = useState<String>('')
+    const imgPost = document.querySelector("#image");
+    imgPost?.addEventListener('change', (e) => {
+      console.log(e.target.files[0])
+      setImage(URL.createObjectURL(e.target.files[0]))
+    })
     const onSubmit: SubmitHandler<TypeInputs> = async (data) =>{
       console.log(data)
       const file = data.image[0]
@@ -51,6 +58,8 @@ const ProductAdd = (props: ProductAddProps) => {
         <div className="mb-3">
           <label className="form-label">Ảnh sản phẩm</label>
           <input type="file" {...register('image')} className="form-control"/>
+          {/* {image && <Image src={image} width={200}/>} */}
+          {image && <Image src={image} alt="" />}
         </div>
         <div className="mb-3">
           <label className="form-label">Danh mục</label>

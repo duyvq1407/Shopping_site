@@ -1,4 +1,4 @@
-import { Space, Table } from 'antd';
+import { Space, Table, Image } from 'antd';
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { IProduct } from '../../types/product'
@@ -26,7 +26,7 @@ const ProductManeger = (props: ProductManegerProps) => {
       key: 'Image',
       render: (text : string, record: any) => (
         <Space size="middle">
-          <img src={record.image} alt="" height={100} />
+          <Image src={record.image} alt="" height={100} />
         </Space>
       ),
     },

@@ -10,7 +10,7 @@ const ProductDetail = () => {
   const [Product, setProduct] = useState<IProduct>()
   useEffect(() => {
     const getProduct = async () => {
-      const { data } = await read(id);
+      const { data } = await read(id as string);
       setProduct(data)      
     };
     getProduct();
