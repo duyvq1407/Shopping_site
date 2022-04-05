@@ -60,7 +60,7 @@ const ProductAdd = (props: ProductAddProps) => {
           <input type="file" {...register('image', {required: true})} id="image" className="form-control"/>
           {errors.image && <span style={{color: 'red'}}>This field is required</span>}
           <br />
-          {image && <Image src={image} width={200}/>}
+          <Image src={image} width={200}/>
         </div>
         <div className="mb-3">
           <label className="form-label">Danh mục</label>

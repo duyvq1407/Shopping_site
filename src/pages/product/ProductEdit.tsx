@@ -62,16 +62,19 @@ const ProductEdit = (props: ProductEditProps) => {
         <div className="mb-3">
             <label className="form-label">Tên sản phẩm</label>
             <input type="text" {...register('name')} className="form-control"/>
+            {errors.name && <span style={{color: 'red'}}>This field is required</span>}
         </div>
         <div className="mb-3">
             <label className="form-label">Giá sản phẩm</label>
             <input type="number" {...register('price')} className="form-control"/>
+            {errors.price && <span style={{color: 'red'}}>This field is required</span>}
         </div>
         <div className="mb-3">
           <label className="form-label">Ảnh sản phẩm</label> <br />
           <input type="file" {...register('image')} id="image" className="form-control"/>
+          {errors.image && <span style={{color: 'red'}}>This field is required</span>}
           <br />
-          {image && <Image src={image} width={200}/>}
+          <Image src={image} width={200}/>
         </div>
         <div className="mb-3">
           <label className="form-label">Danh mục</label>
@@ -81,6 +84,7 @@ const ProductEdit = (props: ProductEditProps) => {
               return <option value={item._id}>{item.name}</option>
             })}
           </select>
+          {errors.category && <span style={{color: 'red'}}>This field is required</span>}
         </div>
         <button className="btn btn-primary">Update Product</button>
         </div>

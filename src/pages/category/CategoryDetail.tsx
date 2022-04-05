@@ -1,8 +1,9 @@
-import { Space, Table } from 'antd';
-import React, { useEffect } from 'react'
+import { Space, Table, Image } from 'antd';
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { listCate, readCate } from '../../api/category';
 import { IProduct } from '../../types/product'
+import { CategoryType } from '../../types/category'
 
 type CategoryDetailProps = {
   products: IProduct[];
@@ -11,19 +12,21 @@ type CategoryDetailProps = {
 
 const CategoryDetail = (props: CategoryDetailProps) => {
   const {id} = useParams();
+  const [cateDetail, setCateDetail] = useState(null)
   useEffect(() => {
       const getCategories = async() => {
           const {data} = await readCate(id);
-          console.log(data.products)
+          setCateDetail(data.products)
       }
       getCategories();
   },[])  
+  console.log(cateDetail)
   const columns = [
     {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      render: (text) => <a>{text}</a>,
+      render: (text : string) => <a>{text}</a>,
     },
     {
       title: 'Price',
@@ -31,18 +34,27 @@ const CategoryDetail = (props: CategoryDetailProps) => {
       key: 'price',
     },
     {
+      title: 'Image',
+      key: 'Image',
+      render: (text : string, record: any) => (
+        <Space size="middle">
+          <Image src={record.image} alt="" height={100} />
+        </Space>
+      ),
+    },
+    {
       title: 'Action',
       key: 'action',
-      render: (text, record) => (
+      render: (text : string, record: any) => (
         <Space size="middle">
-          <a><Link to={`/admin/products/${record._id}/edit`}>Edit</Link></a>
-          <a><button onClick={()=> props.onRemove(record._id)}>Remove</button></a>
+          <Link to={`/admin/products/${record._id}/edit`}>Edit</Link>
+          <button onClick={()=> props.onRemove(record._id)}>Remove</button>
         </Space>
       ),
     },
   ];
   
-  const data = props.products;
+  const data = cateDetail;
   
   return (
     <div>
