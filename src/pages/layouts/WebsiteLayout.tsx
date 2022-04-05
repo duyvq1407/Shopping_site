@@ -1,7 +1,29 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
+import 'antd/dist/antd.css';
+// import './index.css';
+import { Menu, Dropdown, Space } from 'antd';
+import { CategoryType } from '../../types/category';
 
-const WebsiteLayout = () => {
+type WebsiteLayoutProps = {
+    categories: CategoryType[]
+  }
+  
+
+const WebsiteLayout = (props: WebsiteLayoutProps) => {
+    const menu = (
+      <Menu>
+        {props.categories.map((item, index) => {
+            return(
+                <Menu.Item key={index + 1 }>
+                    <a rel="noopener noreferrer"href="#">
+                        {item.name}
+                    </a>
+                </Menu.Item>
+              )
+        })}
+      </Menu>
+    );    
   return (
     <div>
         <header className="bg-light shadow-sm navbar-sticky">
@@ -29,6 +51,16 @@ const WebsiteLayout = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to='/account'>Account</NavLink>
                         </li>
+                        <li className="nav-item">     
+                            <Space direction="vertical">
+                                <Space wrap>
+                                <Dropdown overlay={menu}>
+                                    <NavLink className="nav-link" to=''>Category</NavLink>
+                                </Dropdown>
+                                </Space>
+                            </Space>,
+                        </li>
+                        
                     </ul>
                 </div>
                 </div>

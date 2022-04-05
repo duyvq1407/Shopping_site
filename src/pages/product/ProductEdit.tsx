@@ -39,7 +39,7 @@ const ProductEdit = (props: ProductEditProps) => {
     const onSubmit: SubmitHandler<FormInput> = async (data) => {
       const file = data.image[0];
       if (data.image == image) {
-        props.onUpdate(data)       
+        props.onUpdate(data)
       }
       if(data.image != image){
         const formData = new FormData();

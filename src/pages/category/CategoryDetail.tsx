@@ -12,7 +12,7 @@ type CategoryDetailProps = {
 
 const CategoryDetail = (props: CategoryDetailProps) => {
   const {id} = useParams();
-  const [cateDetail, setCateDetail] = useState(null)
+  const [cateDetail, setCateDetail] = useState<CategoryType[]>([]);
   useEffect(() => {
       const getCategories = async() => {
           const {data} = await readCate(id);

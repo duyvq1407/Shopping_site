@@ -10,7 +10,7 @@ import Dashboard from './pages/Dashboard'
 import ProductManeger from './pages/product/ProductManager'
 import WebsiteLayout from './pages/layouts/WebsiteLayout'
 import Home from './pages/Home'
-import ProductDetail from './pages/product/ProductDetail'
+import ProductDetail from './pages/ProductDetail'
 import ProductAdd from './pages/product/ProductAdd'
 import { IProduct } from './types/product'
 import ProductEdit from './pages/product/ProductEdit'
@@ -25,6 +25,7 @@ import CategoryEdit from './pages/category/CategoryEdit';
 import Account from './pages/Account';
 import CategoryDetail from './pages/category/CategoryDetail';
 import PriveAccount from './components/PrivateAccount';
+import Product from './pages/Product';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -95,11 +96,11 @@ function App() {
               <Route path=':id/view' element={<PriveRouter><CategoryDetail products={products} onRemove={removeItem}/></PriveRouter>}/>
             </Route>
           </Route>
-          <Route path='/' element={<WebsiteLayout/>}>
-            <Route index element = {<Home/>}/>
+          <Route path='/' element={<WebsiteLayout categories={categories}/>}>
+            <Route index element = {<Home products={products}/>}/>
             <Route path='/products'>
-              <Route index  element = {<h1>Product Page</h1>} />
-              <Route path=':id' element = {<ProductDetail/> }/>
+              <Route index  element = {<Product/>} />
+              <Route path=':id' element = {<ProductDetail/>}/>
             </Route>
             <Route path='/About' element = {<h1>About Page</h1>}/>
             <Route path='/signin' element = {<Login />}/>

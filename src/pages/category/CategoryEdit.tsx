@@ -31,6 +31,7 @@ const CategoryEdit = (props: CategoryEditProps) => {
         <div className="mb-3">
             <label className="form-label">Tên danh mục</label>
             <input type="text" {...register('name', {required: true})} className="form-control"/>
+            {errors.name && <span style={{color: 'red'}}>This field is required</span>}
         </div>
         <button className="btn btn-primary">Update Product</button>
         </div>

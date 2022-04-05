@@ -1,10 +1,13 @@
 import React from 'react'
+import { IProduct } from '../types/product'
 
-type Props = {}
+type HomeProps = {
+  products: IProduct[]
+}
 
-const Home = (props: Props) => {
+const Home = (props: HomeProps) => {
   return (
-    <div><h1>Home</h1></div>
+    <div>Home</div>
   )
 }
 
