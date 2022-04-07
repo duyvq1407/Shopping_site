@@ -1,11 +1,13 @@
+import Product from "../pages/Product";
 import { IProduct } from "../types/product";
 import { isAuthenticate } from "../utils/localStorage";
 import instance from "./instance";
 // const { user, token } = JSON.parse(localStorage.getItem('user') as string); // lấy từ localstorage ra
 const userInfo = isAuthenticate();
 
+
 export const list = () => {
-    const url = '/api/products';
+    const url = `/api/products`;
     return instance.get(url);
 }
 export const read = (id: string) => {
@@ -35,4 +37,9 @@ export const update = (product: IProduct) => {
             "Authorization": `Bearer ${userInfo.token}`
         }
     });
+}
+
+export const search = (input: string) =>{
+    const url = `/api/products/search?key=${input}`
+    return instance.get(url);
 }

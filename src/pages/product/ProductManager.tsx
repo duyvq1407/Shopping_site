@@ -21,6 +21,12 @@ const ProductManeger = (props: ProductManegerProps) => {
   },[])
   const columns = [
     {
+      title: '#',
+      dataIndex: 'key',
+      key: 'key',
+      render: (text : string) => <a>{text}</a>,
+    },
+    {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
@@ -67,30 +73,10 @@ const ProductManeger = (props: ProductManegerProps) => {
       _id: item._id
     }
   });
-  // [
-  //   {
-  //     key: '1',
-  //     name: 'John Brown',
-  //     age: 32,
-  //     address: 'New York No. 1 Lake Park',
-  //   },
-  //   {
-  //     key: '2',
-  //     name: 'Jim Green',
-  //     age: 42,
-  //     address: 'London No. 1 Lake Park',
-  //   },
-  //   {
-  //     key: '3',
-  //     name: 'Joe Black',
-  //     age: 32,
-  //     address: 'Sidney No. 1 Lake Park',
-  //   },
-  // ];
   
   return (
     <div>
-      <Table dataSource={data} columns={columns} />
+      <Table dataSource={data} columns={columns} pagination={{ defaultPageSize: 3, showSizeChanger: true, pageSizeOptions: ['3', '5', '10']}} />
     </div>
   )
 }

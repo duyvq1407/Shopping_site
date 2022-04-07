@@ -15,12 +15,11 @@ const CategoryDetail = (props: CategoryDetailProps) => {
   const [cateDetail, setCateDetail] = useState<CategoryType[]>([]);
   useEffect(() => {
       const getCategories = async() => {
-          const {data} = await readCate(id);
+          const {data} = await readCate(id as string);
           setCateDetail(data.products)
       }
       getCategories();
   },[])  
-  console.log(cateDetail)
   const columns = [
     {
       title: 'Name',
@@ -58,7 +57,7 @@ const CategoryDetail = (props: CategoryDetailProps) => {
   
   return (
     <div>
-      <Table dataSource={data} columns={columns} />
+      <Table dataSource={data} columns={columns} pagination={{ defaultPageSize: 3, showSizeChanger: true, pageSizeOptions: ['3', '5', '10']}} />
     </div>
   )
 }
