@@ -48,7 +48,7 @@ const ProductManeger = (props: ProductManegerProps) => {
       key: 'Image',
       render: (text : string, record: any) => (
         <Space size="middle">
-          <Image src={record.image} alt="" height={100} />
+          <Image src={record.image} alt="" height={70} />
         </Space>
       ),
     },

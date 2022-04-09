@@ -74,14 +74,14 @@ const ProductEdit = (props: ProductEditProps) => {
           <input type="file" {...register('image')} id="image" className="form-control"/>
           {errors.image && <span style={{color: 'red'}}>This field is required</span>}
           <br />
-          <Image src={image} width={200}/>
+          <Image src={image as string} width={200}/>
         </div>
         <div className="mb-3">
           <label className="form-label">Danh mục</label>
           <select className="form-select" {...register('category', {required: true})}>
               {/* <option selected disabled>Chọn danh mục</option> */}
-            {props.categories.map(item => {
-              return <option value={item._id}>{item.name}</option>
+            {props.categories.map((item,index) => {
+              return <option key={index+1} value={item._id}>{item.name}</option>
             })}
           </select>
           {errors.category && <span style={{color: 'red'}}>This field is required</span>}

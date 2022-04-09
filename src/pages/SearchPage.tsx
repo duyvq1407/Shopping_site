@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { search } from '../api/products'
 import { IProduct } from '../types/product'
+import Product from './Product'
 
 type SearchPageProps = {}
 
@@ -17,20 +18,35 @@ const SearchPage = (props: SearchPageProps) => {
       getProduct()
     },[q])
   return (
-    <div>
-      <p>Kết quả cho từ khóa <span style={{fontStyle: 'italic'}}>" {q} "</span>...</p>
-      <div className='d-flex justify-content-between'>
-      {products.map((item, index) => {
-        return (
-          <div key={index+1}>
-            <img src={item.image} width={200} />
-            <p>{item.name}</p>
-          </div>
-        )
-      })}
-    </div>
-    </div>
-    
+    <div className='container'>
+        <div className="row">
+        <p>Tìm thấy <span style={{fontStyle: 'italic', fontWeight: 'bold'}}> {products.length} </span>  kết quả cho từ khóa " <span style={{fontStyle: 'italic', fontWeight: 'bold'}}>{q} </span> "...</p>
+            {products.map((item, index) => {
+                return (
+                <div className="col-md-3 col-6 pro-loop" key={index+1}>
+                    <div className="product">
+                        <div className="product_img">
+                        <Link to={`/products/${item._id}`}>
+                            <div className="figure">
+                            <img src={item.image} width={270} height={270}/>
+                            {/* <img src="./assets/img/<?php echo $value['anhchitiet'] ?>" className="image-hover" /> */}
+                            </div>
+                        </Link>
+                        </div>
+                        <div className="product_detail">
+                        <h3 className="product_detail-name">
+                            <Link to={`/products/${item._id}`}>{item.name}</Link>
+                        </h3>
+                        <div className="product_detail-price">
+                            <p>{new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(item.price)}</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                )
+            })}
+        </div>
+      </div>    
   )
 }
 

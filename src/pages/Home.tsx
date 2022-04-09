@@ -10,27 +10,44 @@ type ProductProps = {
 }
 
 const Home = (props: ProductProps) => {
-    return (<div>
-        <div className="font-bold my-3 flex justify-between w-[100%]" >
-            <h3 className="text-red-600">CÁC SẢN PHẨM NỔI BẬT</h3>
-        </div>
-        <div className="grid grid-cols-3 gap-5">
-            {props.products.map((item, index) => {
-                return <div key={index} className=" shadow-md  py-2 px-3 hover:text-red-600 hover:shadow-2xl">
-                    <Link to={'/products/' + item._id} className="hover:text-stone-500" >
-                        <div>
-                            <img src={item.image} alt="" width={150} className="mx-auto w-[286px] h-[270px]" />
-                            <p className="text-red-500 font-bold">{item.name}</p>
-                            <p >{item.price}.000 VNĐ</p>
-                        </div>
-                    </Link>
+    return (
+        <div className="container sanphammoi">
+            <div className="sanphammoi_tiltle">
+                <h2>
+                <a href="#">Sản phẩm mới</a>
+                </h2>
+                <div className="view-all">
+                <a href="#">Xem thêm</a>
                 </div>
-            })}
+            </div>
+            <div className="row">
+                {props.products.map((item, index) => {
+                    return (
+                    <div className="col-md-3 col-6 pro-loop" key={index+1}>
+                        <div className="product">
+                            <div className="product_img">
+                            <Link to={`/products/${item._id}`}>
+                                <div className="figure">
+                                <img src={item.image} width={270} height={270}/>
+                                {/* <img src="./assets/img/<?php echo $value['anhchitiet'] ?>" className="image-hover" /> */}
+                                </div>
+                            </Link>
+                            </div>
+                            <div className="product_detail">
+                            <h3 className="product_detail-name">
+                                <Link to={`/products/${item._id}`}>{item.name}</Link>
+                            </h3>
+                            <div className="product_detail-price">
+                                <p>{new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(item.price)}</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
 
-        </div>
+                    )
+                })}
+            </div>
     </div>)
-
-
 }
 
 export default Home

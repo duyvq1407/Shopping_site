@@ -55,7 +55,7 @@ const WebHeader = (props: WebHeaderProps) => {
                     <Space direction="vertical">
                         <Space wrap>
                         <Dropdown overlay={menu}>
-                            <NavLink className="nav-link" to=''>Category</NavLink>
+                            <NavLink className="nav-link" to='/categories'>Category</NavLink>
                         </Dropdown>
                         </Space>
                     </Space>,
@@ -67,9 +67,9 @@ const WebHeader = (props: WebHeaderProps) => {
                     <NavLink className="nav-link" to='/account'>Account</NavLink>
                 </li>
             </ul>
-            <form onSubmit={handleSubmit(onSubmit)} action='/search' className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex">
+            <form onSubmit={handleSubmit(onSubmit)} action='/search' className="align-items-center col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex h-50">
                 <input type="search" {...register('q')} className="form-control" placeholder="Search..." aria-label="Search" />
-                <button className='ms-1 btn btn-primary'>Search</button>
+                <button className='ms-1 btn btn-primary h-50'>Search</button>
             </form>
             </div>
         </div>

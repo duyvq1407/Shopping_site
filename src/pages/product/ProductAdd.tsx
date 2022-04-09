@@ -2,7 +2,7 @@ import { Image } from 'antd'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import {useForm, SubmitHandler} from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { CategoryType } from '../../types/category'
 type ProductAddProps = {
   onAdd:(product: TypeInputs) => void
@@ -16,6 +16,7 @@ type TypeInputs = {
 }
 
 const ProductAdd = (props: ProductAddProps) => {
+    useParams();
     const {register, handleSubmit, formState: {errors} } = useForm<TypeInputs>();
     const navigate = useNavigate();
     const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/duyvqph18088/image/upload";
@@ -23,6 +24,7 @@ const ProductAdd = (props: ProductAddProps) => {
     const [image, setImage] = useState<String>('https://www.nguonduphong.com/wp-content/themes/hongtq_dev/img/no-image.jpeg')
     const imgPost = document.querySelector("#image");
     imgPost?.addEventListener('change', (e) => {
+      console.log(1)
       setImage(URL.createObjectURL(e.target?.files[0]))
     })
     const onSubmit: SubmitHandler<TypeInputs> = async (data) =>{
@@ -60,14 +62,14 @@ const ProductAdd = (props: ProductAddProps) => {
           <input type="file" {...register('image', {required: true})} id="image" className="form-control"/>
           {errors.image && <span style={{color: 'red'}}>This field is required</span>}
           <br />
-          <Image src={image} width={200}/>
+          <Image src={image as string} width={200}/>
         </div>
         <div className="mb-3">
           <label className="form-label">Danh mục</label>
           <select className="form-select" {...register('category', {required: true})}>
             <option selected disabled value=''>Chọn danh mục</option>
-            {props.categories.map(item => {
-              return <option value={item._id}>{item.name}</option>
+            {props.categories.map((item, index) => {
+              return <option key={index+1} value={item._id}>{item.name}</option>
             })}
           </select>
           {errors.category && <span style={{color: 'red'}}>This field is required</span>}

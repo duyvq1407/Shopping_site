@@ -38,7 +38,7 @@ const CategoryManeger = (props: CategoryManegerProps) => {
   
   return (
     <div>
-      <Table dataSource={data} columns={columns} pagination={{ defaultPageSize: 3, showSizeChanger: true, pageSizeOptions: ['3', '5', '10']}}/>
+      <Table dataSource={data} columns={columns} pagination={{ defaultPageSize: 4, showSizeChanger: true, pageSizeOptions: ['4', '6', '10']}}/>
     </div>
   )
 }

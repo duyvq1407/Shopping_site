@@ -26,7 +26,7 @@ import CategoryDetail from './pages/category/CategoryDetail';
 import PriveAccount from './components/PrivateAccount';
 import Product from './pages/Product';
 import SearchPage from './pages/SearchPage';
-import CateDetail from './pages/cateDetail';
+import CateDetail from './pages/CateDetail';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -98,12 +98,15 @@ function App() {
             </Route>
           </Route>
           <Route path='/' element={<WebsiteLayout categories={categories}/>}>
-            <Route index element = {<Home  products={products}/>}/>
+            <Route index element = {<Home products={products}/>}/>
+            <Route path='/categories'>
+              <Route index element = {<Product products={products} />} />
+              <Route path=':id' element = {<CateDetail/>}/>
+            </Route>
             <Route path='/products'>
-              <Route index  element = {<Product/>} />
+              <Route index element = {<Product products={products} />} />
               <Route path=':id' element = {<ProductDetail/>}/>
             </Route>
-            <Route path='/categories/:id' element = {<CateDetail />}/>
             <Route path='/About' element = {<h1>About Page</h1>}/>
             <Route path='/signin' element = {<Login />}/>
             <Route path='/search' element = {<SearchPage />}/>
