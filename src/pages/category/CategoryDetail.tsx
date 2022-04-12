@@ -53,7 +53,16 @@ const CategoryDetail = (props: CategoryDetailProps) => {
     },
   ];
   
-  const data = cateDetail;
+  const data = cateDetail.map((item: any, index) => {
+    return {
+      key: index + 1,
+      name: item.name,
+      category: item.category,
+      price: item.price,
+      image: item.image,
+      _id: item._id
+    }
+  });
   
   return (
     <div>

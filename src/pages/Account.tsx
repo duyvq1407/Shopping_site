@@ -10,7 +10,12 @@ const Account = (props: Props) => {
     }
     const { user } = JSON.parse(localStorage.getItem('user') as string); // lấy từ localstorage ra
     return (
-        <div>
+        <div className="container sanphammoi">
+            <div className="sanphammoi_tiltle">
+                <h2>
+                  <a href="#">Tài khoản</a>
+                </h2>
+            </div>
             <div className='d-flex align'><h6>Name: </h6> {user.name} </div>
             <div className='d-flex align'><h6>Email: </h6> {user.email} </div>
             <button onClick={()=>{

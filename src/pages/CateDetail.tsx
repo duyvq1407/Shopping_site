@@ -9,7 +9,7 @@ const CateDetail = (props: Props) => {
   const [products, setProducts]= useState<IProduct[]>([])
   const [cateName, setCateName] = useState<string>('')
   const {id} = useParams();
-  console.log(id)
+//   console.log(id)
   useEffect(()=>{
     const getProductByCate = async () =>  {
       const {data} = await readCate(id as string);

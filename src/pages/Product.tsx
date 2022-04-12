@@ -44,7 +44,8 @@ const Home = (props: ProductProps) => {
                     )
                 })}
             </div>
-    </div>)
+    </div>
+    )
 }
 
 export default Home

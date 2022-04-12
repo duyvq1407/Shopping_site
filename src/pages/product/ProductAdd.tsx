@@ -22,9 +22,8 @@ const ProductAdd = (props: ProductAddProps) => {
     const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/duyvqph18088/image/upload";
     const CLOUDINARY_PRESET = "y12jh0jj";
     const [image, setImage] = useState<String>('https://www.nguonduphong.com/wp-content/themes/hongtq_dev/img/no-image.jpeg')
-    const imgPost = document.querySelector("#image");
+    const imgPost = document.getElementById('image')
     imgPost?.addEventListener('change', (e) => {
-      console.log(1)
       setImage(URL.createObjectURL(e.target?.files[0]))
     })
     const onSubmit: SubmitHandler<TypeInputs> = async (data) =>{
@@ -49,7 +48,7 @@ const ProductAdd = (props: ProductAddProps) => {
       <div>
         <div className="mb-3">
           <label className="form-label">Tên sản phẩm</label>
-          <input type="text" {...register('name', {required: true})} className="form-control"/>
+          <input type="text" {...register('name', {required: true, minLength: 5})} className="form-control"/>
           {errors.name && <span style={{color: 'red'}}>This field is required</span>}
         </div>
         <div className="mb-3">
@@ -59,15 +58,16 @@ const ProductAdd = (props: ProductAddProps) => {
         </div>
         <div className="mb-3">
           <label className="form-label">Ảnh sản phẩm</label>
-          <input type="file" {...register('image', {required: true})} id="image" className="form-control"/>
+          <input type="file" id="image" {...register('image', {required: true})} className="form-control" />
+
           {errors.image && <span style={{color: 'red'}}>This field is required</span>}
           <br />
           <Image src={image as string} width={200}/>
         </div>
         <div className="mb-3">
           <label className="form-label">Danh mục</label>
-          <select className="form-select" {...register('category', {required: true})}>
-            <option selected disabled value=''>Chọn danh mục</option>
+          <select className="form-select" defaultValue={''} {...register('category', {required: true})}>
+            <option disabled value={''}>Chọn danh mục</option>
             {props.categories.map((item, index) => {
               return <option key={index+1} value={item._id}>{item.name}</option>
             })}
