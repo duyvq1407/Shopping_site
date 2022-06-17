@@ -9,10 +9,10 @@
 - CRUD user, product
 # SCREENSHOT
 - Client
-![image](https://user-images.githubusercontent.com/77132174/174298756-dbb88273-b77b-45ec-a8e1-01422e1f4ae9.png)
-![image](https://user-images.githubusercontent.com/77132174/174298260-e2b17dc4-53b8-4e81-a4ec-87444a65794f.png)
-![image](https://user-images.githubusercontent.com/77132174/174298366-abc921e8-2f14-4ad6-b423-ebf0927fc9d1.png)
-- Admin
+Home ![image](https://user-images.githubusercontent.com/77132174/174299021-58b51a01-5edb-48bf-b6cd-112ba66e1297.png)
+Filter by category ![image](https://user-images.githubusercontent.com/77132174/174299244-46f85eba-4fbd-4ea0-afb1-9d75a16bdf89.png)
+Search by name ![image](https://user-images.githubusercontent.com/77132174/174299369-a2365f17-b8ae-403f-9b59-24e8290081cd.png)
+- Admin 
 ![image](https://user-images.githubusercontent.com/77132174/174298604-65578eeb-5596-44b7-a7c1-6c020f076aff.png)
 
 
