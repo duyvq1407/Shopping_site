@@ -1,5 +1,5 @@
 # SHOPPING SITE
-- Shopping website , login page, register page, admin page, shoppingbag page, order page.
+
 # Main technology used
 - React, Typescript
 - Boostraps,AntDesign
@@ -8,5 +8,11 @@
 - Sign in, sign up
 - CRUD user, product
 # SCREENSHOT
-![image](https://user-images.githubusercontent.com/77132174/171379595-6ed67ff1-9835-4d4a-b2e9-858154f50fb3.png)
-![image](https://user-images.githubusercontent.com/77132174/171379771-538bea50-b7b7-4c1d-8a45-97b37c6f45d1.png)
+- Client
+![image](https://user-images.githubusercontent.com/77132174/174298756-dbb88273-b77b-45ec-a8e1-01422e1f4ae9.png)
+![image](https://user-images.githubusercontent.com/77132174/174298260-e2b17dc4-53b8-4e81-a4ec-87444a65794f.png)
+![image](https://user-images.githubusercontent.com/77132174/174298366-abc921e8-2f14-4ad6-b423-ebf0927fc9d1.png)
+- Admin
+![image](https://user-images.githubusercontent.com/77132174/174298604-65578eeb-5596-44b7-a7c1-6c020f076aff.png)
+
+
